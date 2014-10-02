@@ -151,9 +151,9 @@ nmap <silent> <F10> :!astyle --style=ansi -R "./*.c" "./*.h" -s4 -S -N -L -m0 -M
 "map <F5> : Calendar <cr>
 "map <F6> : ConqueTerm bash <cr>
 
-set cursorline
+"set cursorline
 
-set cursorcolumn
+"set cursorcolumn
 
 
 "omini
