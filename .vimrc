@@ -15,7 +15,8 @@ syntax on
 ":colorscheme tabula
 ":colorscheme soso
 ":colorscheme autumn2
-:colorscheme lucius
+":colorscheme lucius
+:colorscheme desert
 
 filetype plugin indent on
 set completeopt=longest,menu
