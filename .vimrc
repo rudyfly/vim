@@ -44,7 +44,7 @@ set history=1000
 " 
 set t_Co=256
 
-set expandtab
+"set expandtab
 
 "unenable complete
 
@@ -62,13 +62,15 @@ set modifiable
 
 set whichwrap=b,s,<,>,[,]
 
+"set tab
 set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set noexpandtab
 
-set hlsearch
-" 
-"set tabstop=8
+set hlsearch 
 
-set smarttab
+"set smarttab
 
 set encoding=utf-8
 "language message zh_CN.UTF-8
@@ -78,9 +80,6 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set scrolloff=8
 
 set ruler
-
-" 
-"set expandtab
 
 " 
 "set autochdir
