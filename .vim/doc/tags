@@ -295,7 +295,14 @@ bufexplorer-windowlayout	bufexplorer.txt	/*bufexplorer-windowlayout*
 bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
 c-support	csupport.txt	/*c-support*
+color-scheme-explorer	csExplorer.txt	/*color-scheme-explorer*
 cs	surround.txt	/*cs*
+csexplorer	csExplorer.txt	/*csexplorer*
+csexplorer-changelog	csExplorer.txt	/*csexplorer-changelog*
+csexplorer-credits	csExplorer.txt	/*csexplorer-credits*
+csexplorer-todo	csExplorer.txt	/*csexplorer-todo*
+csexplorer-usage	csExplorer.txt	/*csexplorer-usage*
+csexplorer.txt	csExplorer.txt	/*csexplorer.txt*
 csupport	csupport.txt	/*csupport*
 csupport-Ctrl-j	csupport.txt	/*csupport-Ctrl-j*
 csupport-ad-mappings	csupport.txt	/*csupport-ad-mappings*
