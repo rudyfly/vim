@@ -72,10 +72,7 @@ autocmd bufread,bufnew *.cp set filetype=c
 
 "-----------------------    Map   ---------------------------
 nnoremap X :qall<CR>
-nmap <F6> :cn<cr>
-nmap <F5> :cp<cr>
 nnoremap <silent> <F12> :A<CR>
-nnoremap <silent> <F3> :Grep<CR>
 nnoremap <silent> <F11> :!ctags -R --c-kinds=+p --c++-kinds=+lp --fields=+iaS --fields=+l --extra=+q <CR>
 nmap <silent> <F10> :!astyle --style=ansi -R "./*.c" "./*.h" -s4 -S -N -L -m0 -M40 --suffix=none --convert-tabs %f<CR>
 
@@ -107,9 +104,9 @@ let g:bufExplorerSplitRight = 0
 let g:bufExplorerSplitVertical = 1
 let g:bufExplorerSplitVertSize = 30
 let g:BufExplorerUseCurrentWindow = 1
-noremap <silent> <F6> :BufExplorer<CR>
-noremap <silent> <m-F6> :BufExplorerHorizontalSplit<CR>
-noremap <silent> <c-F6> :BufExplorerVerticalSplit<CR>
+noremap <silent> <F4> :BufExplorer<CR>
+noremap <silent> <m-F4> :BufExplorerHorizontalSplit<CR>
+noremap <silent> <c-F4> :BufExplorerVerticalSplit<CR>
 
 "-----------------------    MiniBufExplorer    -----------------------
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -145,6 +142,20 @@ nmap <C-_>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-_>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+"----------------------    Grep    ---------------------
+nnoremap <silent> <F3> :Grep<CR>
+let Grep_Default_Filelist = '*.[chS]'
+"let Grep_Default_Filelist = '*.c *.cpp *.asm'
+
+"----------------------    Quickfix    ---------------------
+nmap <F6> :cn<cr>
+nmap <F5> :cp<cr>
+nnoremap <silent>cw :cw 6<cr>
+nnoremap <silent>cl :ccl <cr>
+autocmd BufReadPost quickfix  setlocal modifiable
+			\ | silent exe 'g/^/s//\=line(".")." "/'
+			\ | setlocal nomodifiable
+
 "----------------------    unuse    ---------------------
 "omini
 "for close python direction
@@ -159,14 +170,13 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 "let g:OmniCpp_MayCompleteScope = 1
 "let g:OmniCpp_DefaultNamespaces = ["std","_GLIBCXX_STD"]
 
-if getfsize("vimscript")>0
-    source vimscript
-endif
+"if getfsize("vimscript")>0
+"source vimscript
+"endif
 
 "set ofu=syntaxcomplete#Complete
 "autocmd FileType python¡¡set omnifunc=pythoncomplete#Complete
 "autocmd FileType python runtime! autoload/pythoncomplete.vim
-
 
 "map fg : Dox<cr>
 "let g:DoxygenToolkit_autorName="victor.g"
@@ -188,7 +198,6 @@ endif
 "map <leader>db :DoxBlock<cr>
 "map <leader>dc a /*  */<left><left><left>
 
-
 "python
 "let g:pydiction_location = '/home/vi/.vim/tools/pydirction/complete-dict'
 
@@ -202,7 +211,6 @@ endif
 
 "let g:vimwiki_camel_case = 0
 "let g:vimwiki_valid_html_tags = 'b,i,s,u,sub,sup,kbd,br,hr,div,del,code,red,center,left,right,h4,h5,h6,pre'
-
 
 "vimgdb
 "let g:vimgdb_debug_file = ""
