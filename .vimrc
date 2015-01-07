@@ -60,6 +60,10 @@ autocmd FileType c,cp,cpp,h :setlocal cindent cinoptions=:0,g0,t0
 autocmd FileType c,cp,cpp,h :setlocal et sta sw=4 sts=4 tabstop=4
 autocmd bufread,bufnew *.cp set filetype=c
 
+"command! -nargs=1 Silent
+"	\ | execute ':silent !'.<q-args>
+"	\ | execute ':redraw!'
+
 "-----------------------    colorscheme      -----------------------
 ":colorscheme tabula
 ":colorscheme soso
@@ -73,8 +77,12 @@ autocmd bufread,bufnew *.cp set filetype=c
 "-----------------------    Map   ---------------------------
 nnoremap X :qall<CR>
 nnoremap <silent> <F12> :A<CR>
-nnoremap <silent> <F11> :!ctags -R --c-kinds=+p --c++-kinds=+lp --fields=+iaS --fields=+l --extra=+q <CR>
+"nnoremap <silent> <F12> :!find `pwd` -name "*.[chsS]" -print | sed 's,^\./,,' > ./cscope.files && cscope -b<CR>
+nnoremap <silent> <F11> :!find `pwd` -name '*.[hc]' -exec ctags --append {} +<CR>
+"nnoremap <silent> <F11> :!ctags -R --c-kinds=+p --c++-kinds=+lp --fields=+iaS --fields=+l --extra=+q <CR>
 nmap <silent> <F10> :!astyle --style=ansi -R "./*.c" "./*.h" -s4 -S -N -L -m0 -M40 --suffix=none --convert-tabs %f<CR>
+nnoremap <silent> <C-m> :make clean -j8;make -j8<CR>
+"nnoremap <silent> <C-m> :Silent make clean -j8 && make -j8<CR>
 
 "-----------------------    TagList    -----------------------
 let Tlist_Show_One_File=1
@@ -85,7 +93,7 @@ let Tlist_Auto_Update = 1
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Inc_Winwidth = 10
-nnoremap <silent> <F8> :TlistToggle<CR>
+nnoremap <silent> <F7> :TlistToggle<CR>
 set tags=tags
 set tags+=/usr/include/tags
 
@@ -93,7 +101,7 @@ set tags+=/usr/include/tags
 let NERDTreeWinPos = 'right'
 let NERDTreeDirArrows = 0
 let NERDTreeWinSize = 25
-nnoremap <silent><F7> :NERDTreeToggle<CR>
+nnoremap <silent><F8> :NERDTreeToggle<CR>
 
 
 "-----------------------    Bufexplorer    -----------------------
@@ -155,6 +163,8 @@ nnoremap <silent>cl :ccl <cr>
 autocmd BufReadPost quickfix  setlocal modifiable
 			\ | silent exe 'g/^/s//\=line(".")." "/'
 			\ | setlocal nomodifiable
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
 "----------------------    unuse    ---------------------
 "omini
